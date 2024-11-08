@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>Oppgave 1.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #5f826b; font-style: italic;}
+.s1 { color: #bcbec4;}
+.s2 { color: #7a7e85;}
+.s3 { color: #bcbec4;}
+.s4 { color: #2aacb8;}
+.s5 { color: #6aab73;}
+.s6 { color: #cf8e6d;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Oppgave 1.py</font>
+</center></td></tr></table>
+<pre><span class="s0">&quot;&quot;&quot; 
+Første oppgavekrav USN grunnleggende programmering i Python 
+Kjartan Albrigtsen 
+kjartis@hotmail.com 
+&quot;&quot;&quot;</span>
+<span class="s2">#først setter jeg de variablene jeg har fått</span>
+<span class="s1">insurance_electric </span><span class="s3">= </span><span class="s4">5000 </span><span class="s2">#kr per år</span>
+<span class="s1">insurance_gas </span><span class="s3">= </span><span class="s4">7500 </span><span class="s2">#kr pr år</span>
+<span class="s1">road_tax </span><span class="s3">= </span><span class="s4">8.38 </span><span class="s2"># kr per dag - norsk trafikkforsikringsavgift</span>
+<span class="s1">power_electric </span><span class="s3">= </span><span class="s4">0.2 </span><span class="s2"># kWh per km med elbil</span>
+<span class="s1">power_price </span><span class="s3">= </span><span class="s4">2.00 </span><span class="s2"># kr per kWh</span>
+<span class="s1">cost_gas </span><span class="s3">= </span><span class="s4">1.0 </span><span class="s2"># kr pr km med bensinbil</span>
+<span class="s1">toll_road_electric </span><span class="s3">= </span><span class="s4">0.1 </span><span class="s2">#kr per km med elbil</span>
+<span class="s1">toll_road_gas </span><span class="s3">= </span><span class="s4">0.3 </span><span class="s2">#kr per km med bensinbil</span>
+
+<span class="s2">#ber brukeren om input på hvor mye hen kjører per år</span>
+<span class="s1">km_input </span><span class="s3">= </span><span class="s1">input</span><span class="s3">(</span><span class="s5">&quot;Hvor mange km planlegger du å kjøre hvert år?&quot;</span><span class="s3">)</span>
+<span class="s1">km </span><span class="s3">= </span><span class="s1">float</span><span class="s3">(</span><span class="s1">km_input</span><span class="s3">)</span>
+
+<span class="s2">#beregner kost som ikke er avhengig av kjøretøyet</span>
+<span class="s1">road_tax_tot </span><span class="s3">= </span><span class="s1">road_tax </span><span class="s3">* </span><span class="s4">365 </span><span class="s2">#i skuddår vil dette bli 1 dag for lite, men jeg ser bort fra det i denne oppgaven</span>
+
+<span class="s2">#beregner kost som gjelder for elbil</span>
+<span class="s1">fuel_cost_el </span><span class="s3">= </span><span class="s1">power_electric </span><span class="s3">* </span><span class="s1">power_price </span><span class="s3">* </span><span class="s1">km</span>
+<span class="s1">toll_road_el_tot </span><span class="s3">= </span><span class="s1">toll_road_electric </span><span class="s3">* </span><span class="s1">km</span>
+
+<span class="s2">#beregner kost som gjelder for bensinbil</span>
+<span class="s1">fuel_cost_gas </span><span class="s3">= </span><span class="s1">cost_gas </span><span class="s3">* </span><span class="s1">km</span>
+<span class="s1">toll_road_gas_tot </span><span class="s3">= </span><span class="s1">toll_road_gas </span><span class="s3">* </span><span class="s1">km</span>
+
+<span class="s2">#beregner totalkostnader</span>
+<span class="s1">el_total_cost </span><span class="s3">= </span><span class="s1">insurance_electric </span><span class="s3">+ </span><span class="s1">road_tax_tot </span><span class="s3">+ </span><span class="s1">fuel_cost_el </span><span class="s3">+ </span><span class="s1">toll_road_el_tot</span>
+<span class="s1">gas_total_cost </span><span class="s3">= </span><span class="s1">insurance_gas </span><span class="s3">+ </span><span class="s1">road_tax_tot </span><span class="s3">+ </span><span class="s1">fuel_cost_gas </span><span class="s3">+ </span><span class="s1">toll_road_gas_tot</span>
+
+<span class="s2">#beregner differansen mellom kostnadene</span>
+<span class="s1">cost_diff </span><span class="s3">= </span><span class="s1">gas_total_cost </span><span class="s3">- </span><span class="s1">el_total_cost</span>
+
+
+<span class="s1">print </span><span class="s3">()</span>
+<span class="s1">print </span><span class="s3">(</span><span class="s5">f&quot;Under forutsetning av at du kjører </span><span class="s6">{</span><span class="s1">int</span><span class="s3">(</span><span class="s1">km</span><span class="s3">)</span><span class="s6">} </span><span class="s5">km per år vil kostnadene være som vist nedenfor&quot;</span><span class="s3">) </span><span class="s2">#bruker int-funksjon for å unngå desimaltall</span>
+<span class="s1">print </span><span class="s3">(</span><span class="s5">&quot;Vi tar her ikke med kostnader til renter, verditap etc.&quot;</span><span class="s3">)</span>
+<span class="s1">print </span><span class="s3">(</span><span class="s5">&quot;Svarene er avrundet til nærmeste heltall.&quot;</span><span class="s3">)</span>
+<span class="s1">print </span><span class="s3">()</span>
+<span class="s1">print </span><span class="s3">(</span><span class="s5">&quot;Oppsummering:&quot;</span><span class="s3">)</span>
+<span class="s1">print </span><span class="s3">(</span><span class="s5">f&quot;Bensinbilen vil koste deg </span><span class="s6">{</span><span class="s1">int</span><span class="s3">(</span><span class="s1">gas_total_cost</span><span class="s3">)</span><span class="s6">} </span><span class="s5">kr per år&quot;</span><span class="s3">) </span><span class="s2">#bruker int-funksjon for å unngå desimaltall</span>
+<span class="s1">print </span><span class="s3">(</span><span class="s5">f&quot;Elbilen vil koste deg </span><span class="s6">{</span><span class="s1">int</span><span class="s3">(</span><span class="s1">el_total_cost</span><span class="s3">)</span><span class="s6">} </span><span class="s5">kr per år&quot;</span><span class="s3">) </span><span class="s2">#bruker int-funksjon for å unngå desimaltall</span>
+<span class="s1">print </span><span class="s3">()</span>
+
+<span class="s2"># skriver ut forskjellig tekst, avhengig av hvem som er dyrest</span>
+<span class="s6">if </span><span class="s1">cost_diff </span><span class="s3">&gt; </span><span class="s4">0</span><span class="s3">:</span>
+    <span class="s1">print</span><span class="s3">(</span><span class="s5">f&quot;Bensinbilen er </span><span class="s6">{</span><span class="s1">int</span><span class="s3">(</span><span class="s1">cost_diff</span><span class="s3">)</span><span class="s6">} </span><span class="s5">kr dyrere enn elbilen.&quot;</span><span class="s3">)</span>
+<span class="s6">elif </span><span class="s1">cost_diff </span><span class="s3">&lt; </span><span class="s4">0</span><span class="s3">:</span>
+    <span class="s1">print</span><span class="s3">(</span><span class="s5">f&quot;Elbilen er </span><span class="s6">{</span><span class="s1">int</span><span class="s3">(-</span><span class="s1">cost_diff</span><span class="s3">)</span><span class="s6">} </span><span class="s5">kr dyrere enn bensinbilen.&quot;</span><span class="s3">)</span>
+<span class="s6">else</span><span class="s3">:</span>
+    <span class="s1">print</span><span class="s3">(</span><span class="s5">&quot;Kostnaden for å kjøre elbil og bensinbil er lik.&quot;</span><span class="s3">)</span>
+</pre>
+</body>
+</html>
